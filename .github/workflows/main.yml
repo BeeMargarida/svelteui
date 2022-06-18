@@ -13,7 +13,20 @@ jobs:
     runs-on: ubuntu-latest
     container: node:${{ matrix.node-version }}
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          id: cache-dependencies
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: |
+            **/package-lock.json
+            ./package-lock.json
+      - uses: actions/setup-node@v3
+        with:
+          id: cache-packages
+          path: packages/**
+          key: ${{ runner.os }}-${{ hashFiles('packages/*/package') }}
       - run: node --version
       - run: npm i
       - run: npm run format
