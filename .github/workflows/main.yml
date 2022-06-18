@@ -25,7 +25,7 @@ jobs:
         id: cache-packages
         with:
           path: packages/**
-          key: ${{ runner.os }}-${{ hashFiles('packages/*/package') }}
+          key: ${{ runner.os }}-${{ hashFiles('packages/*') }}
       - run: node --version
       - run: npm i
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
