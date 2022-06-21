@@ -27,7 +27,9 @@ jobs:
         uses: actions/cache@v3
         id: cache-modules
         with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          path: |
+            **/node_modules
+            ${{ steps.npm-cache-dir.outputs.dir }}
           key: ${{ runner.os }}-${{ matrix.node-version }}-modules-${{ hashFiles('./package-lock.json') }}-${{ hashFiles('packages/*/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-${{ matrix.node-version }}-modules
