@@ -18,16 +18,21 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: 'npm'
-          cache-dependency-path: |
+      - uses: actions/cache@v3
+        id: cache-modules
+        with:
+          path: |
             **/package-lock.json
             ./package-lock.json
+          key: ${{ runner.os }}-${{ matrix.node-version }}-${{ hashFiles('./package-lock.json') }}-${{ hashFiles('packages/*/package-lock.json') }}
       - uses: actions/cache@v3
         id: cache-packages
         with:
           path: packages/**
           key: ${{ runner.os }}-${{ hashFiles('packages/*') }}
       - run: node --version
-      - run: npm ci
+      - run: npm i
+        if: steps.cache-modules.outputs.cache-hit != 'true'
       - run: npm run format
       - run: npm run lint
       - run: npm run package
