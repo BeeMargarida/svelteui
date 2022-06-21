@@ -27,6 +27,7 @@ jobs:
           path: packages/**
           key: ${{ runner.os }}-${{ hashFiles('packages/*') }}
       - run: node --version
+      - run: npm install
       - run: npm run format
       - run: npm run lint
       - run: npm run package
