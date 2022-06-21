@@ -14,13 +14,13 @@ jobs:
     container: node:${{ matrix.node-version }}
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v3
+      - uses: actions/cache@v3
+        id: cache-dependencies
         with:
-          node-version: ${{ matrix.node }}
-          cache: 'npm'
-          cache-dependency-path: |
+          path: |
             **/package-lock.json
             ./package-lock.json
+          key: ${{ runner.os }}-${{ hashFiles('./package-lock.json') }}-${{ hashFiles('packages/*/package-lock.json') }}
       - uses: actions/cache@v3
         id: cache-packages
         with:
@@ -28,6 +28,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('packages/*') }}
       - run: node --version
       - run: npm install
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
       - run: npm run format
       - run: npm run lint
       - run: npm run package
