@@ -26,8 +26,6 @@ jobs:
           path: packages/**
           key: ${{ runner.os }}-${{ hashFiles('packages/*') }}
       - run: node --version
-      - run: npm i
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
       - run: npm run format
       - run: npm run lint
       - run: npm run package
