@@ -42,8 +42,8 @@ jobs:
       - run: node --version
       - run: yarn install --frozen-lockfile
         if: steps.cache-modules.outputs.cache-hit != 'true'
-      - run: npm run format
-      - run: npm run lint
-      - run: npm run package
+      - run: yarn format
+      - run: yarn lint
+      - run: yarn package
         if: steps.cache-packages.outputs.cache-hit != 'true'
-      - run: npm run test
+      - run: yarn test
