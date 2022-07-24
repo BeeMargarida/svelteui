@@ -17,8 +17,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          cache: 'yarn'
           node-version: ${{ matrix.node }}
+      - run: npm install -g yarn
       - name: Get yarn cache directory
         id: yarn-cache-dir
         run: |
