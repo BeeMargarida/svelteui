@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     container: node:${{ matrix.node-version }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v1
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -41,11 +41,8 @@ jobs:
       - run: node --version
       - run: yarn install --immutable
         if: steps.cache-modules.outputs.cache-hit != 'true'
-      - run: ls -a ./packages/svelteui-composables/node_modules
       - run: yarn format
       - run: yarn lint
-      - run: |
-          ls -a ./packages/svelteui-composables/node_modules
-          yarn package
+      - run: yarn package
         if: steps.cache-packages.outputs.cache-hit != 'true'
       - run: yarn test
