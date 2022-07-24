@@ -19,6 +19,7 @@ jobs:
         with:
           cache: 'yarn'
           node-version: ${{ matrix.node }}
+          cache-dependency-path: '**/yarn.lock'
       - name: Get yarn cache directory
         id: yarn-cache
         run: |
@@ -40,7 +41,7 @@ jobs:
           path: packages/**
           key: ${{ runner.os }}-${{ hashFiles('packages/*') }}
       - run: node --version
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
         if: steps.cache-modules.outputs.cache-hit != 'true'
       - run: yarn format
       - run: yarn lint
