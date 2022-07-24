@@ -41,6 +41,7 @@ jobs:
       - run: node --version
       - run: yarn install --immutable
         if: steps.cache-modules.outputs.cache-hit != 'true'
+      - run: ls -a ./packages/svelteui-composables/node_modules
       - run: yarn format
       - run: yarn lint
       - run: yarn package
