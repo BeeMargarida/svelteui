@@ -44,6 +44,8 @@ jobs:
       - run: ls -a ./packages/svelteui-composables/node_modules
       - run: yarn format
       - run: yarn lint
-      - run: yarn package
+      - run: |
+          ls -a ./packages/svelteui-composables/node_modules
+          yarn package
         if: steps.cache-packages.outputs.cache-hit != 'true'
       - run: yarn test
