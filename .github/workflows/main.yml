@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     container: node:${{ matrix.node-version }}
     steps:
-      - run: sudo chown -R $USER:$USER /home/github/actions-runner/_work/svelteui
       - uses: actions/checkout@v1
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -25,7 +24,7 @@ jobs:
           echo "::set-output name=dir::$(yarn cache dir)"
       - name: Cache node_modules
         uses: actions/cache@v3
-        id: cache-modules
+        id: cache-node-modules
         with:
           path: |
             **/node_modules
@@ -41,7 +40,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('packages/*') }}
       - run: node --version
       - run: yarn install --immutable
-        if: steps.cache-modules.outputs.cache-hit != 'true'
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
       - run: yarn format
       - run: yarn lint
       - run: yarn package
