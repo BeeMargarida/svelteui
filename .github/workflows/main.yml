@@ -41,8 +41,8 @@ jobs:
       - run: node --version
       - run: yarn install --immutable
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      - run: yarn run format
-      - run: yarn run lint
+      # - run: yarn run format
+      # - run: yarn run lint
       - run: yarn run package
         if: steps.cache-packages.outputs.cache-hit != 'true'
       - run: yarn run test
