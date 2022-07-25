@@ -29,7 +29,7 @@ jobs:
           path: |
             **/node_modules
             ${{ steps.yarn-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-${{ matrix.node-version }}-modules-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ matrix.node-version }}-modules-${{ hashFiles('./yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-${{ matrix.node-version }}-modules-
       - name: Cache packages
@@ -41,8 +41,8 @@ jobs:
       - run: node --version
       - run: yarn install --immutable
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      - run: yarn format
-      - run: yarn lint
-      - run: yarn package
+      - run: yarn run format
+      - run: yarn run lint
+      - run: yarn run package
         if: steps.cache-packages.outputs.cache-hit != 'true'
-      - run: yarn test
+      - run: yarn run test
