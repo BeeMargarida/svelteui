@@ -11,7 +11,9 @@ jobs:
       matrix:
         node-version: [16, 17]
     runs-on: ubuntu-latest
-    container: node:${{ matrix.node-version }}
+    container:
+      image: node:${{ matrix.node-version }}
+      options: --user 1001
     steps:
       - uses: actions/checkout@v1
       - name: Setup Node
@@ -43,6 +45,6 @@ jobs:
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
       # - run: yarn run format
       # - run: yarn run lint
-      - run: sudo yarn run package
+      - run: yarn run package
         if: steps.cache-packages.outputs.cache-hit != 'true'
       - run: yarn run test
