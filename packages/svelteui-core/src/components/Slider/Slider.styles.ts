@@ -1,4 +1,4 @@
-import { keyframes, createStyles, type SvelteUIColor } from '$lib/styles';
+import { createStyles, type SvelteUIColor } from '$lib/styles';
 import type { DefaultProps, SvelteUINumberSize, Transition } from '$lib/styles';
 import type { Component } from '$lib/internal';
 

@@ -22,12 +22,14 @@ export interface TrackStyleParams {
 	color: SvelteUIColor;
 	radius: SvelteUINumberSize | number;
   disabled: boolean;
+  offset: number;
+  filled: number;
 }
 
 export default createStyles(
-	(theme, { size, color, radius, disabled }: TrackStyleParams) => {
+	(theme, { size, color, radius, disabled, offset, filled }: TrackStyleParams) => {
 		return {
-			track: {
+			root: {
         position: 'relative',
         height: theme.fn.size({ sizes, size }),
         width: '100%',
@@ -59,6 +61,8 @@ export default createStyles(
           ? theme.fn.themeColor('gray', 4)
           : theme.fn.variant({ variant: 'filled', color }).background,
         borderRadius: theme.fn.radius(radius),
+        left: `calc(${offset}% - ${theme.fn.size({ size, sizes })}px)`,
+        width: `calc(${filled}% - ${theme.fn.size({ size, sizes })}px)`,
 
         darkMode: {
           backgroundColor: disabled ? theme.fn.themeColor('dark', 3) : theme.fn.variant({ variant: 'filled', color }).background,

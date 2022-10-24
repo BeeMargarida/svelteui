@@ -23,10 +23,10 @@
   /** An action that forwards inner dom node events from parent component */
 	const forwardEvents = createEventForwarder(get_current_component());
 
-	$: ({ classes } = useStyles({ size, color, radius, disabled }));
+	$: ({ classes } = useStyles({ size, color, radius, disabled, offset, filled }));
 </script>
 
-<div class={classes.track}>
+<div class={classes.root}>
   <Box class={classes.bar} use={[forwardEvents, [useActions, use]]}/>
   <slot />
   <!-- TODO: add marks and onChange logic-->
