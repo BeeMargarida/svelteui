@@ -205,8 +205,8 @@ export default createStyles(
 			withIcon: {
 				paddingLeft: typeof iconWidth === 'number' ? iconWidth : sizes[size] ?? sizes.md
 			},
-			invalid: {
-				[`${theme.dark} &`]: {
+			'& .invalid': {
+				darkMode: {
 					color: '$red600 !important',
 					borderColor: '$red600 !important',
 					'&::placeholder': {
@@ -222,7 +222,7 @@ export default createStyles(
 				}
 			},
 			disabled: {
-				[`${theme.dark} &`]: {
+				darkMode: {
 					backgroundColor: '$dark600 !important'
 				},
 				backgroundColor: '$gray100 !important',
@@ -235,7 +235,7 @@ export default createStyles(
 				}
 			},
 			icon: {
-				[`${theme.dark} &`]: {
+				darkMode: {
 					color: invalid ? 'red600' : '$dark200'
 				},
 				pointerEvents: 'none',

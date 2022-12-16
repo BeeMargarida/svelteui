@@ -31,7 +31,7 @@ export default createStyles((theme, { color, radius, variant }: AlertStylesParam
 			borderRadius: theme.fn.radius(radius),
 			border: '1px solid transparent',
 			'&.light': {
-				[`${theme.dark} &`]: {
+				darkMode: {
 					backgroundColor: theme.fn.variant({ variant: 'light', color }).background[0],
 					color: theme.fn.variant({ variant: 'light', color }).color[0]
 				},
@@ -40,7 +40,7 @@ export default createStyles((theme, { color, radius, variant }: AlertStylesParam
 			},
 
 			'&.filled': {
-				[`${theme.dark} &`]: {
+				darkMode: {
 					backgroundColor: theme.fn.variant({ variant: 'filled', color }).background[0]
 				},
 				backgroundColor: theme.fn.variant({ variant: 'filled', color }).background[1],
@@ -52,7 +52,7 @@ export default createStyles((theme, { color, radius, variant }: AlertStylesParam
 			},
 
 			'&.outline': {
-				[`${theme.dark} &`]: {
+				darkMode: {
 					color: theme.fn.variant({ variant: 'outline', color }).color[0],
 					borderColor: theme.fn.variant({ variant: 'outline', color }).border[0]
 				},
