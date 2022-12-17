@@ -67,23 +67,23 @@
 			lineVariant,
 			lineWidth: _lineWidth
 		},
-		{ override }
+		{ override, name: "TimelineItem" }
 	));
 </script>
 
 <Box
 	bind:element
 	{use}
-	class={cx(className, classes.root, {
-		active: _active,
-		lineActive: _lineActive
+	class={cx(className, classes.root,  {
+    lineActive: _lineActive,
+		active: _active
 	})}
 	{...$$restProps}
 >
-	<div class={cx(classes.bulletContainer, { bulletContainerWithChild: bullet })}>
+	<div class={cx(classes.bulletContainer, bullet && classes.bulletContainerWithChild)}>
 		<slot name="bullet">
 			{#if bullet}
-				<svelte:component this={bullet} size={bulletSize} {color} class={classes.bullet} />
+				<svelte:component this={bullet} class={classes.bullet} size={bulletSize} {color} />
 			{/if}
 		</slot>
 	</div>
