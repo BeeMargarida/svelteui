@@ -22,9 +22,9 @@ export interface LoaderPropsExtended extends Partial<SVGElement> {
 }
 
 export interface LoaderProps extends DefaultProps<Omit<Component, 'prototype'>> {
-	variant: LoaderPropsExtended['variant'];
-	color: LoaderPropsExtended['color'];
-	size: LoaderPropsExtended['size'];
+	variant?: LoaderPropsExtended['variant'];
+	color?: LoaderPropsExtended['color'];
+	size?: LoaderPropsExtended['size'];
 }
 
 export const getCorrectShade = (color: SvelteUIColor | string, dark: boolean = false) => {
