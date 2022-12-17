@@ -117,7 +117,7 @@ export default createStyles(
 			},
 
 			iconWrapper: {
-        ref: getRef('iconWrapper'),
+				ref: getRef('iconWrapper'),
 				color: '#ffffff',
 				transform: 'translateY(5px) scale(0.5)',
 				opacity: 0,
@@ -143,7 +143,7 @@ export default createStyles(
 			},
 
 			icon: {
-        ref: getRef('icon'),
+				ref: getRef('icon'),
 				color: '#ffffff',
 				width: iconSizes[size],
 				height: iconSizes[size],

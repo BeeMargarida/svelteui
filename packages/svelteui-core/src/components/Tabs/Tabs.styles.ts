@@ -36,7 +36,7 @@ export interface TabsStyleParams {
 export const getVariantStyles = (
 	orientation: 'horizontal' | 'vertical',
 	theme: SvelteUITheme,
-  getRef
+	getRef
 ): VariantThemeFunction => {
 	return {
 		default: {
@@ -80,14 +80,14 @@ export default createStyles((theme, { orientation, tabPadding }: TabsStyleParams
 		},
 		wrapper: {},
 		tabs: {
-      ref: getRef('tabs')
-    },
+			ref: getRef('tabs')
+		},
 		content: {
 			[orientation === 'horizontal' ? 'paddingTop' : 'paddingLeft']: theme.fn.size({
 				size: tabPadding,
 				sizes: theme.space
 			}),
-      display: 'block'
+			display: 'block'
 		},
 		...getVariantStyles(orientation, theme, getRef)
 	};

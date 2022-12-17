@@ -11,8 +11,8 @@ export interface TabProps extends DefaultProps {
 	variant?: TabsVariant;
 	orientation?: 'horizontal' | 'vertical';
 	tabKey?: string;
-  disabled?: boolean;
-  title?: string;
+	disabled?: boolean;
+	title?: string;
 }
 
 export interface TabStyleParams {
@@ -81,9 +81,9 @@ export const getVariantStyles = (
 					color: theme.colors.white.value,
 					background: theme.fn.variant({ variant: 'filled', color })
 				},
-        '&:hover': {
-          background: theme.fn.variant({ variant: 'filled', color }).background[1]
-        }
+				'&:hover': {
+					background: theme.fn.variant({ variant: 'filled', color }).background[1]
+				}
 			}
 		}
 	};
@@ -105,12 +105,12 @@ export default createStyles((theme, { color, orientation }: TabStyleParams) => {
 			darkMode: {
 				color: theme.colors.white.value
 			},
-      ...getVariantStyles(color, orientation, theme),
+			...getVariantStyles(color, orientation, theme),
 			'&:disabled': {
-        cursor: 'not-allowed',
+				cursor: 'not-allowed',
 				color: theme.fn.themeColor('gray', 5),
 				darkMode: {
-          color: theme.fn.themeColor('dark', 3)
+					color: theme.fn.themeColor('dark', 3)
 				}
 			}
 		},
@@ -133,9 +133,9 @@ export default createStyles((theme, { color, orientation }: TabStyleParams) => {
 		label: {},
 		tabContent: {
 			display: 'none',
-      '&.active': {
-        display: 'block'
-      }
+			'&.active': {
+				display: 'block'
+			}
 		}
 	};
 });
