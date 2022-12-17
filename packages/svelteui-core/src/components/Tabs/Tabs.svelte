@@ -30,8 +30,10 @@
 	const dispatch = createEventDispatcher();
 
 	onMount(() => {
-		const children = element.querySelectorAll('.svelteui-tab-content');
+		const children = element.querySelectorAll('.svelteui-Tab-content');
 		tabNodes = Array.from(children);
+    setupTabs();
+		calculateActive();
 	});
 
 	// initialize a 'reactive context' which is basically
@@ -57,7 +59,7 @@
 	 * to tab changes.
 	 */
 	function setupTabs() {
-		const tabs = element.querySelectorAll('.svelteui-tab');
+		const tabs = element.querySelectorAll('.svelteui-Tab');
 		for (let [index, tab] of Array.from(tabs).entries()) {
 			const key = tab.getAttribute('data-key');
 			tab.addEventListener('click', () => onTabClick(index, key));
@@ -85,11 +87,6 @@
 		}
 	}
 
-	onMount(() => {
-		setupTabs();
-		calculateActive();
-	});
-
 	function onTabClick(index: number, key: string) {
 		dispatch('change', { index: index, key: key });
 		_active = index;
@@ -97,7 +94,7 @@
 	}
 
 	function onTabKeyDown(event: KeyboardEvent) {
-		const tabs = element.querySelectorAll('.svelteui-tab-content');
+		const tabs = element.querySelectorAll('.svelteui-Tab');
 
 		let _index = _active;
 		if (event.code === nextTabCode) {
@@ -123,7 +120,7 @@
 	$: previousTabCode = orientation === 'horizontal' ? 'ArrowLeft' : 'ArrowUp';
 	$: $contextStore, _active, calculateActive();
 
-	$: ({ cx, classes } = useStyles({ orientation, tabPadding }, { override }));
+	$: ({ cx, classes } = useStyles({ orientation, tabPadding }, { override, name: "Tabs" }));
 </script>
 
 <!--

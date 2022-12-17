@@ -11,6 +11,8 @@ export interface TabProps extends DefaultProps {
 	variant?: TabsVariant;
 	orientation?: 'horizontal' | 'vertical';
 	tabKey?: string;
+  disabled?: boolean;
+  title?: string;
 }
 
 export interface TabStyleParams {
@@ -73,12 +75,15 @@ export const getVariantStyles = (
 				}
 			},
 			'&.active': {
-				color: theme.colors.black.value,
-				background: theme.fn.themeColor('gray', 0),
+				color: theme.colors.white.value,
+				background: theme.fn.variant({ variant: 'filled', color }).background[1],
 				darkMode: {
 					color: theme.colors.white.value,
-					background: theme.fn.themeColor('dark', 6)
-				}
+					background: theme.fn.variant({ variant: 'filled', color })
+				},
+        '&:hover': {
+          background: theme.fn.variant({ variant: 'filled', color }).background[1]
+        }
 			}
 		}
 	};
@@ -100,12 +105,12 @@ export default createStyles((theme, { color, orientation }: TabStyleParams) => {
 			darkMode: {
 				color: theme.colors.white.value
 			},
-			...getVariantStyles(color, orientation, theme),
+      ...getVariantStyles(color, orientation, theme),
 			'&:disabled': {
-				cursor: 'not-allowed',
+        cursor: 'not-allowed',
 				color: theme.fn.themeColor('gray', 5),
 				darkMode: {
-					color: theme.fn.themeColor('dark', 3)
+          color: theme.fn.themeColor('dark', 3)
 				}
 			}
 		},
@@ -119,7 +124,7 @@ export default createStyles((theme, { color, orientation }: TabStyleParams) => {
 		},
 		icon: {
 			'&:not(:only-child)': {
-				marginRight: theme.space.xsPX
+				marginRight: `${theme.space.xs.value}px`
 			},
 			'& *': {
 				display: 'block'
@@ -127,7 +132,10 @@ export default createStyles((theme, { color, orientation }: TabStyleParams) => {
 		},
 		label: {},
 		tabContent: {
-			display: 'none'
+			display: 'none',
+      '&.active': {
+        display: 'block'
+      }
 		}
 	};
 });
