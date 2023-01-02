@@ -18,9 +18,6 @@ module.exports = {
 	core: {
 		builder: '@storybook/builder-vite'
 	},
-	svelteOptions: {
-		preprocess: preprocess()
-	},
 	features: {
 		// On-demand store does not work for .svelte stories, only CSF.
 		// Requires all stories to be loaded in bulk.
