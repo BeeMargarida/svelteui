@@ -1,10 +1,9 @@
-const preprocess = require('svelte-preprocess');
 const path = require('path');
+// const preprocess = require('svelte-preprocess');
 const { mergeConfig } = require('vite');
 
 module.exports = {
 	stories: [
-    '../../packages/{svelteui-composables,svelteui-core,svelteui-dates}/src/**/*.stories.mdx',
     '../../packages/{svelteui-composables,svelteui-core,svelteui-dates}/src/**/*.stories.@(js|jsx|ts|tsx|svelte)'
   ],
 	addons: [
@@ -14,18 +13,33 @@ module.exports = {
 		'@storybook/addon-svelte-csf',
 		'storybook-dark-mode'
 	],
-	framework: '@storybook/svelte',
-	core: {
-		builder: '@storybook/builder-vite'
-	},
+	framework: '@storybook/sveltekit',
 	features: {
-		// On-demand store does not work for .svelte stories, only CSF.
-		// Requires all stories to be loaded in bulk.
-		// REFERENCE https://storybook.js.org/docs/svelte/configure/overview#feature-flags
-		storyStoreV7: false
+		storyStoreV7: true
 	},
+  // core: {
+  //   builder: '@storybook/builder-vite',
+  // },
+  // svelteOptions: {
+	// 	preprocess: preprocess()
+	// },
+  docs: {
+    autodocs: false
+  },
+  // async viteFinal(config) {
+  //   // Merge custom configuration into the default config
+  //   return mergeConfig(config, {
+  //     // Use the same "resolve" configuration as your app
+  //     resolve: (await import('../../packages/svelteui-core/vite.config.js')).default.resolve,
+  //     // Add dependencies to pre-optimization
+  //     optimizeDeps: {
+  //       include: ['storybook-dark-mode'],
+  //     },
+  //   });
+  // },
 	async viteFinal(config) {
 		return mergeConfig(config, {
+      // preprocess: preprocess(),
       resolve: {
         alias: {
           $lib: path.resolve(__dirname, '../../packages/svelteui-core/src'),

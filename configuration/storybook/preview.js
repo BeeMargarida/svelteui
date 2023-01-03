@@ -1,6 +1,6 @@
 import ThemeDecorator from './ThemeDecorator.svelte';
 
-export const decorators = [() => ({ Component: ThemeDecorator })];
+export const decorators = [() => ThemeDecorator];
 
 export const parameters = {
 	actions: { argTypesRegex: '^on[A-Z].*' },
