@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { createEventForwarder, useActions } from '$lib/internal';
 	import { get_current_component } from 'svelte/internal';
-  import { randomID } from '$lib/styles';
+	import { createEventForwarder, useActions } from '$lib/internal';
+	import { randomID } from '$lib/styles';
 	import { Input } from '../Input';
 	import { InputWrapper } from '../InputWrapper';
 	import type { TextInputProps as $$TextInputProps } from './TextInput';
@@ -31,7 +31,7 @@
 
 	/** An action that forwards inner dom node events from parent component */
 	const forwardEvents = createEventForwarder(get_current_component());
-  const baseId = randomID(id)
+	const baseId = randomID(id);
 	// Flag that enables the override of the right section slot
 	// of the Input component only if it was provided
 	const _showRightSection =
