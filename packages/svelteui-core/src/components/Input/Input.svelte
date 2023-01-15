@@ -37,7 +37,13 @@
 	const forwardEvents = createEventForwarder(get_current_component());
 
 	/** workaround for root type errors, this should be replaced by a better type system */
-	const castRoot = () => root as string;
+	type Input = 'input' | 'select' | 'textarea' | 'datalist';
+	function castRoot() {
+		return root as string as Input;
+	}
+	function isInput(root: string): root is Input {
+		return ['info', 'features', 'special', 'stars'].includes(root);
+	}
 	let isHTMLElement;
 	let isComponent;
 
@@ -108,12 +114,12 @@ Base component to create custom inputs
 			class={cx(className, classes.input, `${variant}Variant`)}
 			{...$$restProps}
 		/>
-	{:else if isHTMLElement}
+	{:else if isHTMLElement && isInput(String(root))}
 		<!-- prettier-ignore -->
 		<svelte:element
 			bind:this={element}
 			this={castRoot()}
-			value={value}
+			{value}
 			use:useActions={use}
 			use:forwardEvents
 			on:change={onChange}
