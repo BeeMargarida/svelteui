@@ -115,25 +115,26 @@ Base component to create custom inputs
 			{...$$restProps}
 		/>
 	{:else if isHTMLElement && isInput(String(root))}
+    <!-- on:change needs to appear before use:forwardEvents so that the
+    ordering of the events is correct and the value is updated before propagation -->
 		<!-- prettier-ignore -->
 		<svelte:element
-			bind:this={element}
 			this={castRoot()}
 			{value}
-			use:useActions={use}
-			use:forwardEvents
-			on:change={onChange}
 			{required}
 			{disabled}
 			{id}
-      {autocomplete}
+			{autocomplete}
 			aria-invalid={invalid}
 			class:disabled
 			class:invalid
 			class:withIcon={icon}
 			class={cx(className, classes.input, `${variant}Variant`)}
+			on:change={onChange}
+			use:useActions={use}
+			use:forwardEvents
 			{...$$restProps}
-			>
+		>
 			<slot />
 		</svelte:element>
 	{:else if isComponent && typeof root !== 'string'}
