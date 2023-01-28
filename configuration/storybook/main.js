@@ -3,9 +3,7 @@ const path = require('path');
 const { mergeConfig } = require('vite');
 
 module.exports = {
-	stories: [
-    '../../packages/{svelteui-composables,svelteui-core,svelteui-dates}/src/**/*.stories.@(js|jsx|ts|tsx|svelte)'
-  ],
+  stories: ['../../packages'],
 	addons: [
 		'@storybook/addon-links',
 		'@storybook/addon-essentials',
@@ -14,15 +12,6 @@ module.exports = {
 		'storybook-dark-mode'
 	],
 	framework: '@storybook/sveltekit',
-	features: {
-		storyStoreV7: true
-	},
-  // core: {
-  //   builder: '@storybook/builder-vite',
-  // },
-  // svelteOptions: {
-	// 	preprocess: preprocess()
-	// },
   docs: {
     autodocs: false
   },
