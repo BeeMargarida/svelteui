@@ -1,0 +1,1 @@
+function o(i,c){const{enabled:l,callback:d}=c,e=({target:n})=>{i.contains(n)||d(i)};function t({enabled:n}){n?window.addEventListener("click",e):window.removeEventListener("click",e)}return t({enabled:l}),{update:t,destroy(){window.removeEventListener("click",e)}}}export{o as c};

@@ -1,0 +1,1 @@
+import{b as e}from"./_configurable.5540db98.js";function r(t="svelteui",s=!1){if(s&&e){let a=`${t}-${Math.random().toString(36).substring(2,10)}`;return localStorage[`${t}-hash`]!==void 0?a=localStorage.getItem(`${t}-hash`):localStorage.setItem(`${t}-hash`,a),a}return`${t}-${Math.random().toString(36).substring(2,10)}`}export{r as u};

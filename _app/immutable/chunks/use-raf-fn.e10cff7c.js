@@ -1,0 +1,1 @@
+const f=()=>typeof window<"u",a=f();function c(r,i={}){const{immediate:o=!0}=i;let e=!1;async function n(){if(e)try{r(),a&&await window.requestAnimationFrame(n)}catch(u){console.error(u)}}function t(){e||(e=!0,n())}function s(){e=!1}return o&&t(),{isActive:e,pause:s,resume:t}}export{c as u};

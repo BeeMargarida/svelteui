@@ -1,0 +1,1 @@
+function a(e,c){const i=async()=>{const t=typeof c=="function"?c():c;if(t)try{await navigator.clipboard.writeText(t),e.dispatchEvent(new CustomEvent("useclipboard",{detail:t}))}catch(r){e.dispatchEvent(new CustomEvent("useclipboard-error",{detail:r}))}};return e.addEventListener("click",i,!0),{update:t=>c=t,destroy:()=>e.removeEventListener("click",i,!0)}}export{a as c};

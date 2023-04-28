@@ -1,0 +1,24 @@
+import{S as G,i as H,s as M,y,a as D,z as S,c as I,A as T,b as u,a0 as N,g,d as x,B,h as a,aj as R,q as $,r as _,e as C,v as V,f as W,k as A,l as b,m as k,Z as X,a8 as O,n as Z,W as d,X as F}from"./index.b4f0bbdc.js";import{D as J}from"./Demo.9cccb4ab.js";import{f as q}from"./index.38638217.js";import{A as K}from"./ArrowUp.8fea7dfb.js";import{A as L}from"./Affix.3bfcdf8c.js";import{T as Q}from"./Text.d4cabcdc.js";import{B as ee}from"./Button.b50e74fc.js";const{window:te}=R;function oe(i){let t;return{c(){t=$("Affix is located at the bottom of the screen, scroll to see it")},l(o){t=_(o,"Affix is located at the bottom of the screen, scroll to see it")},m(o,e){u(o,t,e)},d(o){o&&a(t)}}}function z(i){let t,o,e,r;return o=new ee({props:{$$slots:{leftIcon:[ne],default:[re]},$$scope:{ctx:i}}}),o.$on("click",i[2]),{c(){t=A("div"),y(o.$$.fragment)},l(n){t=b(n,"DIV",{});var f=k(t);S(o.$$.fragment,f),f.forEach(a)},m(n,f){u(n,t,f),T(o,t,null),r=!0},p(n,f){const s={};f&8&&(s.$$scope={dirty:f,ctx:n}),o.$set(s)},i(n){r||(g(o.$$.fragment,n),X(()=>{r&&(e||(e=O(t,q,{y:20,duration:250},!0)),e.run(1))}),r=!0)},o(n){x(o.$$.fragment,n),e||(e=O(t,q,{y:20,duration:250},!1)),e.run(0),r=!1},d(n){n&&a(t),B(o),n&&e&&e.end()}}}function re(i){let t;return{c(){t=$("Scroll to top")},l(o){t=_(o,"Scroll to top")},m(o,e){u(o,t,e)},d(o){o&&a(t)}}}function ne(i){let t,o;return t=new K({}),{c(){y(t.$$.fragment)},l(e){S(t.$$.fragment,e)},m(e,r){T(t,e,r),o=!0},i(e){o||(g(t.$$.fragment,e),o=!0)},o(e){x(t.$$.fragment,e),o=!1},d(e){B(t,e)}}}function se(i){let t,o,e=i[0]>0&&z(i);return{c(){e&&e.c(),t=C()},l(r){e&&e.l(r),t=C()},m(r,n){e&&e.m(r,n),u(r,t,n),o=!0},p(r,n){r[0]>0?e?(e.p(r,n),n&1&&g(e,1)):(e=z(r),e.c(),g(e,1),e.m(t.parentNode,t)):e&&(V(),x(e,1,1,()=>{e=null}),W())},i(r){o||(g(e),o=!0)},o(r){x(e),o=!1},d(r){e&&e.d(r),r&&a(t)}}}function le(i){let t,o,e,r,n,f;return t=new Q({props:{align:"center",$$slots:{default:[oe]},$$scope:{ctx:i}}}),e=new L({props:{position:{bottom:20,right:20},$$slots:{default:[se]},$$scope:{ctx:i}}}),{c(){y(t.$$.fragment),o=D(),y(e.$$.fragment)},l(s){S(t.$$.fragment,s),o=I(s),S(e.$$.fragment,s)},m(s,c){T(t,s,c),u(s,o,c),T(e,s,c),r=!0,n||(f=N(te,"scroll",i[1]),n=!0)},p(s,[c]){const m={};c&8&&(m.$$scope={dirty:c,ctx:s}),t.$set(m);const h={};c&9&&(h.$$scope={dirty:c,ctx:s}),e.$set(h)},i(s){r||(g(t.$$.fragment,s),g(e.$$.fragment,s),r=!0)},o(s){x(t.$$.fragment,s),x(e.$$.fragment,s),r=!1},d(s){B(t,s),s&&a(o),B(e,s),n=!1,f()}}}const ie=`
+<script>
+  import { fly } from 'svelte/transition';
+	import { Affix, Button, Text } from '@svelteuidev/core';
+	import { ArrowUp } from 'radix-icons-svelte';
+
+  let scrollY = 0;
+<\/script>
+
+<svelte:window on:scroll={() => scrollY = window.scrollY } />
+
+<Text align="center">Affix is located at the bottom of the screen, scroll to see it</Text>
+<Affix position={{ bottom: 20, right: 20 }}>
+    {#if scrollY > 0}
+        <div transition:fly={{ y: 20, duration: 250 }}>
+            <Button on:click={() => window.scrollTo(0, 0)}>
+                <svelte:fragment slot='leftIcon'>
+                    <ArrowUp />
+                </svelte:fragment>
+                Scroll to top
+            </Button>
+        </div>
+    {/if}
+</Affix>`,fe="demo",ae={code:ie};function ce(i,t,o){let e=0;return[e,()=>o(0,e=window.scrollY),()=>window.scrollTo(0,0)]}class me extends G{constructor(t){super(),H(this,t,ce,le,M,{})}}const ue=Object.freeze(Object.defineProperty({__proto__:null,configuration:ae,default:me,type:fe},Symbol.toStringTag,{value:"Module"}));function pe(i){let t,o,e,r,n,f,s,c,m,h,U,E,v,Y;return v=new J({props:{demo:ue}}),{c(){t=A("h2"),o=$("Usage"),e=D(),r=A("p"),n=$("Affix renders an element inside the "),f=A("code"),s=$("target"),c=$(" prop given, with fixed position inside a "),m=A("a"),h=$("Portal"),U=$(" component."),E=D(),y(v.$$.fragment),this.h()},l(l){t=b(l,"H2",{});var p=k(t);o=_(p,"Usage"),p.forEach(a),e=I(l),r=b(l,"P",{});var w=k(r);n=_(w,"Affix renders an element inside the "),f=b(w,"CODE",{});var P=k(f);s=_(P,"target"),P.forEach(a),c=_(w," prop given, with fixed position inside a "),m=b(w,"A",{href:!0});var j=k(m);h=_(j,"Portal"),j.forEach(a),U=_(w," component."),w.forEach(a),E=I(l),S(v.$$.fragment,l),this.h()},h(){Z(m,"href","core/portal")},m(l,p){u(l,t,p),d(t,o),u(l,e,p),u(l,r,p),d(r,n),d(r,f),d(f,s),d(r,c),d(r,m),d(m,h),d(r,U),u(l,E,p),T(v,l,p),Y=!0},p:F,i(l){Y||(g(v.$$.fragment,l),Y=!0)},o(l){x(v.$$.fragment,l),Y=!1},d(l){l&&a(t),l&&a(e),l&&a(r),l&&a(E),B(v,l)}}}const we={title:"Affix",group:"svelteuidev-core",packageGroup:"@svelteuidev/core",slug:"/core/affix/",category:"overlay",description:"Render Svelte component inside portal at fixed position",importCode:"import { Affix } from '@svelteuidev/core';",source:"svelteui-core/src/components/Affix/Affix.svelte",docs:"core/affix.md"};class Ae extends G{constructor(t){super(),H(this,t,null,pe,M,{})}}export{Ae as default,we as metadata};
